@@ -43,18 +43,23 @@ void insertMap(HashMap * map, char * key, void * value){
   if (map==NULL || key==NULL){
     return;
   }
-  
-  unsigned long index=0; 
-  for (int i=0; key[i]; i++){
-    index=(index*31+key[i])%map->capacity;
-  }
-  
-  Node* newNode = createNode(key, value);
+  int pos=hash(key,map->capacity);
+  Pair*par=createPair(key,value);
 
-  newNode->next=map->buckets[index];
-  map->buckets[index]=newNode;
+  if (map->buckets[pos]==NULL){
+    map->buckets[pos]=par;
+    map->current=pos;
+  }else{
+    for (int i=0; i<map->capacity+pos;i++){
+      int j=i%map->capacity;
+      if(map->buckets[j]==NULL || map->buckets[j]->key==NULL){
+        map->buckets[j]=par;
+        map->current=j;
+        break;
+      }
+    }
+  }
   map->size++;
-  map->current=index;
 }
 
 void enlarge(HashMap * map) {
