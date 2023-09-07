@@ -52,6 +52,11 @@ void insertMap(HashMap * map, char * key, void * value){
   }else{
     for (int i=0; i<map->capacity+pos;i++){
       int j=i%map->capacity;
+      if (map->buckets[j]!=NULL && map->buckets[j]->key!=NULL && strcmp(map->buckets[j]->key, key)==0){
+        free(par->key);
+        free(par);
+        return;
+      }
       if(map->buckets[j]==NULL || map->buckets[j]->key==NULL){
         map->buckets[j]=par;
         map->current=j;
