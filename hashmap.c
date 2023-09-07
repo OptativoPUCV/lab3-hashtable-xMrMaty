@@ -44,27 +44,18 @@ void insertMap(HashMap * map, char * key, void * value){
     return;
   }
   int pos=hash(key,map->capacity);
-  Pair*par=createPair(key,value);
-
-  if (map->buckets[pos]==NULL){
-    map->buckets[pos]=par;
-    map->current=pos;
-  }else{
-    for (int i=0; i<map->capacity+pos;i++){
-      int j=i%map->capacity;
-      if (map->buckets[j]!=NULL && map->buckets[j]->key!=NULL && strcmp(map->buckets[j]->key, key)==0){
-        free(par->key);
-        free(par);
-        break;
-      }
-      if(map->buckets[j]==NULL || map->buckets[j]->key==NULL){
-        map->buckets[j]=par;
-        map->current=j;
-        break;
-      }
+  for (int i=0; i<map->capacity+pos;i++){
+    int j=(pos+i)%map->capacity;
+    Pair * currentPair=map->buckets[j];
+    if(currentPair==NULL){
+      map->buckets[j]=currentPair(key, value);
+      map->current=j;
+      map->size++;
+      return;
+    }else if(currentPair->key!=NULL && strcmp(currentPair->key, key)==0){
+      return;
     }
   }
-  map->size++;
 }
 
 void enlarge(HashMap * map) {

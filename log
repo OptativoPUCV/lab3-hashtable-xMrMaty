@@ -124,3 +124,16 @@ Thu 07 Sep 2023 08:46:53 PM UTC:
  tests:  2|5
 total_score: 10/70
 6a55da8
+Thu 07 Sep 2023 08:53:43 PM UTC: 
+ hashmap.c | 25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:23: error: called object ‘currentPair’ is not a function or function pointer
+   51 |       map->buckets[j]=currentPair(key, value);
+      |                       ^~~~~~~~~~~
+hashmap.c:49:12: note: declared here
+   49 |     Pair * currentPair=map->buckets[j];
+      |            ^~~~~~~~~~~
+Compilation failed
+af90386
