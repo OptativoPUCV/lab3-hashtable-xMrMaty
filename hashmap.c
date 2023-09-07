@@ -55,7 +55,7 @@ void insertMap(HashMap * map, char * key, void * value){
       if (map->buckets[j]!=NULL && map->buckets[j]->key!=NULL && strcmp(map->buckets[j]->key, key)==0){
         free(par->key);
         free(par);
-        return;
+        break;
       }
       if(map->buckets[j]==NULL || map->buckets[j]->key==NULL){
         map->buckets[j]=par;
