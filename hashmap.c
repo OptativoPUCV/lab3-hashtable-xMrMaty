@@ -39,9 +39,17 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
+void insertMap(HashMap * map, char * key, void * value){
+  unsigned long index=0; 
+  for (int i=0; key[i]; i++){
+    index=(index*31+key[i])%map->capacity;
+  }
+  Node* newNode=createNode(key, value);
 
-
+  newNode->next=map->buckets[index];
+  map->buckets[index]=newNode;
+  map->size++
+  map->current=index;
 }
 
 void enlarge(HashMap * map) {

@@ -8,3 +8,30 @@ Thu 07 Sep 2023 07:46:03 PM UTC:
  tests:  1|5
 total_score: 10/70
 6d223ee
+Thu 07 Sep 2023 08:17:21 PM UTC: 
+ hashmap.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:47:3: error: unknown type name ‘Node’
+   47 |   Node* newNode=createNode(key, value);
+      |   ^~~~
+hashmap.c:47:17: error: implicit declaration of function ‘createNode’ [-Werror=implicit-function-declaration]
+   47 |   Node* newNode=createNode(key, value);
+      |                 ^~~~~~~~~~
+hashmap.c:47:17: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+hashmap.c:49:10: error: request for member ‘next’ in something not a structure or union
+   49 |   newNode->next=map->buckets[index];
+      |          ^~
+hashmap.c:50:22: error: assignment to ‘Pair *’ from incompatible pointer type ‘int *’ [-Werror=incompatible-pointer-types]
+   50 |   map->buckets[index]=newNode;
+      |                      ^
+hashmap.c:51:14: error: expected ‘;’ before ‘map’
+   51 |   map->size++
+      |              ^
+      |              ;
+   52 |   map->current=index;
+      |   ~~~         
+cc1: all warnings being treated as errors
+Compilation failed
+f8e1d69
