@@ -35,3 +35,30 @@ hashmap.c:51:14: error: expected ‘;’ before ‘map’
 cc1: all warnings being treated as errors
 Compilation failed
 f8e1d69
+Thu 07 Sep 2023 08:18:24 PM UTC: 
+ hashmap.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:3: error: unknown type name ‘Node’
+   51 |   Node* newNode = createNode(key, value);
+      |   ^~~~
+hashmap.c:51:19: error: implicit declaration of function ‘createNode’ [-Werror=implicit-function-declaration]
+   51 |   Node* newNode = createNode(key, value);
+      |                   ^~~~~~~~~~
+hashmap.c:51:19: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+hashmap.c:53:10: error: request for member ‘next’ in something not a structure or union
+   53 |   newNode->next=map->buckets[index];
+      |          ^~
+hashmap.c:54:22: error: assignment to ‘Pair *’ from incompatible pointer type ‘int *’ [-Werror=incompatible-pointer-types]
+   54 |   map->buckets[index]=newNode;
+      |                      ^
+hashmap.c:55:14: error: expected ‘;’ before ‘map’
+   55 |   map->size++
+      |              ^
+      |              ;
+   56 |   map->current=index;
+      |   ~~~         
+cc1: all warnings being treated as errors
+Compilation failed
+b45588c
