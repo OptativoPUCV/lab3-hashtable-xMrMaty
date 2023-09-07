@@ -52,7 +52,7 @@ void insertMap(HashMap * map, char * key, void * value){
   }else{
     for (int i=0; i<map->capacity+pos;i++){
       int j=i%map->capacity;
-      Pair* currentPair=map->buckets[k];
+      Pair* currentPair=map->buckets[j];
       if(currentPair==NULL || currentPair->key==NULL){
         map->buckets[j]=par;
         map->current=j;
