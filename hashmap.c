@@ -48,11 +48,12 @@ void insertMap(HashMap * map, char * key, void * value){
   for (int i=0; key[i]; i++){
     index=(index*31+key[i])%map->capacity;
   }
+  
   Node* newNode = createNode(key, value);
 
   newNode->next=map->buckets[index];
   map->buckets[index]=newNode;
-  map->size++
+  map->size++;
   map->current=index;
 }
 
