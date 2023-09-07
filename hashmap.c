@@ -52,14 +52,15 @@ void insertMap(HashMap * map, char * key, void * value){
   }else{
     for (int i=0; i<map->capacity+pos;i++){
       int j=i%map->capacity;
-      if(map->buckets[j]==NULL || map->buckets[j]->key==NULL){
+      Pair* currentPair=map->buckets[k];
+      if(currentPair==NULL || currentPair->key==NULL){
         map->buckets[j]=par;
         map->current=j;
-        break;
+        map->size++;
+        return;
       }
     }
   }
-  map->size++;
 }
 
 void enlarge(HashMap * map) {

@@ -89,3 +89,14 @@ Thu 07 Sep 2023 08:31:56 PM UTC:
  tests:  2|5
 total_score: 10/70
 ecff0aa
+Thu 07 Sep 2023 08:36:15 PM UTC: 
+ hashmap.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:55:38: error: ‘k’ undeclared (first use in this function)
+   55 |       Pair* currentPair=map->buckets[k];
+      |                                      ^
+hashmap.c:55:38: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+104b738
