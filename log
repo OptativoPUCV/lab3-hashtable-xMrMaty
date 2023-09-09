@@ -236,3 +236,17 @@ hashmap.c:66:50: error: expected ‘)’ before ‘newCapacity’
       |                                                  )
 Compilation failed
 7250141
+Sat 09 Sep 2023 02:09:30 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:66:31: error: too many arguments to function ‘malloc’
+   66 |   Pair** newBuckets = (Pair**)malloc(sizeof(Pair*), newCapacity);
+      |                               ^~~~~~
+In file included from test.c:2:
+/nix/store/iwd8ic5hhwdxn5dga0im55g5hjl270cd-glibc-2.33-47-dev/include/stdlib.h:539:14: note: declared here
+  539 | extern void *malloc (size_t __size) __THROW __attribute_malloc__
+      |              ^~~~~~
+Compilation failed
+ff192ef

@@ -63,7 +63,7 @@ void enlarge(HashMap * map){
   return;
   }
   long newCapacity = map->capacity * 2;
-  Pair** newBuckets = (Pair**)malloc(sizeof(Pair) newCapacity);
+  Pair** newBuckets = (Pair**)malloc(sizeof(Pair*), newCapacity);
   if(newBuckets == NULL){
     return;
   }
