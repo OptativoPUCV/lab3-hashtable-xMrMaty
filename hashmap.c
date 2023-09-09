@@ -128,7 +128,14 @@ Pair * firstMap(HashMap * map){
   return NULL;
 }
 
-Pair * nextMap(HashMap * map) {
-
-    return NULL;
+Pair * nextMap(HashMap * map){
+  for (int i=map->current+1;i<map->capacity;i++){
+    Pair* currentPair=map->buckets[i];
+    if (currentPair!=NULL && currentPair->key!=NULL){
+      map->current=i;
+      return currentPair;
+    }
+  }
+  map->current=-1;
+  return NULL;
 }
