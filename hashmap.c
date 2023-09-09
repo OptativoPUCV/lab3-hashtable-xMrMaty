@@ -108,7 +108,7 @@ Pair * searchMap(HashMap * map,  char * key){
       return currentPair;
     }
     i=(i+1)%map->capacity;
-    if(i==orginal_i){
+    if(i==original_i){
       break;
     }
   }
