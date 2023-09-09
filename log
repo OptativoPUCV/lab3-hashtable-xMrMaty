@@ -137,3 +137,19 @@ hashmap.c:49:12: note: declared here
       |            ^~~~~~~~~~~
 Compilation failed
 af90386
+Sat 09 Sep 2023 01:20:46 AM UTC: 
+ hashmap.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘==’ token
+   51 |   Pair* newPair==createPair(key, value);
+      |                ^~
+hashmap.c:51:16: error: expected expression before ‘==’ token
+hashmap.c:52:7: error: ‘newPair’ undeclared (first use in this function); did you mean ‘Pair’?
+   52 |   if (newPair==NULL){
+      |       ^~~~~~~
+      |       Pair
+hashmap.c:52:7: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+bea7459
