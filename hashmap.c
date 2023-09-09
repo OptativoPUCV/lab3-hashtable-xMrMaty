@@ -56,10 +56,31 @@ void insertMap(HashMap * map, char * key, void * value){
   map->size++;
 }
 
-void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+void enlarge(HashMap * map){
+  enlarge_called = 1; //no borrar (testing purposes)
 
+  if (map==NULL){
+    return;
+  }
+  long newCapacity=map->capacity*2;
+  Pair** newBuckets=(Pair**)calloc(newCapacity, sizeof(Pair*));
 
+  if (newBuckets==NULL){
+    return;
+  }
+  for(long i=0;i>map->capacity;i++){
+    Pair* currentPair=map->buckets[i];
+    if(currentPair!=NULL && currentPair->key!=NULL){
+      long pos=hash(currentPair->key, newCapacity);
+      while(newBuckets[pos]!=NULL){
+        pos=(pos+1)%newCapacity;
+      }
+      newBuckets[pos]=currentPair;
+    }
+  }
+  free(map->buckets);
+  map->buckets=newBuckets;
+  map->capacity=newCapacity;
 }
 
 
