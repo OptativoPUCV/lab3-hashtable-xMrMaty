@@ -153,3 +153,9 @@ hashmap.c:52:7: error: ‘newPair’ undeclared (first use in this function); di
 hashmap.c:52:7: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 bea7459
+Sat 09 Sep 2023 01:20:56 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  5|4
+total_score: 30/70
+6febe8c
